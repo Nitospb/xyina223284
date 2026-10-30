@@ -1,0 +1,27 @@
+"""Сортировка пузырьком по возрастанию без изменения исходного списка."""
+
+
+def bubble_sort(values: list[int]) -> list[int]:
+    """Вернуть отсортированную копию values.
+
+    Время: O(n²) в среднем и худшем случае, O(n) для готового списка.
+    Дополнительная память: O(n) для копии списка.
+    """
+    result = values.copy()
+
+    for end in range(len(result) - 1, 0, -1):
+        swapped = False
+        for index in range(end):
+            if result[index] > result[index + 1]:
+                result[index], result[index + 1] = result[index + 1], result[index]
+                swapped = True
+        if not swapped:
+            break
+
+    return result
+
+
+if __name__ == "__main__":
+    numbers = [64, 34, 25, 12, 22, 11, 90]
+    print("Исходный список:", numbers)
+    print("Отсортированный список:", bubble_sort(numbers))
